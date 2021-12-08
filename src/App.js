@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
+
+import { Header } from './components/Header';
+import { TheOfficeList } from './components/TheOfficeList';
 
 export const App = () => {
   return (
     <div>
-      Find me in src/app.js!
+      <Header />
+      <TheOfficeList />
     </div>
-  )
-}
+  );
+};
