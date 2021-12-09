@@ -27,3 +27,29 @@ code {
   height: 80px;
   width: auto;
 }
+
+/* h2 {
+  justify-content: center;
+} */
+
+span::before {
+  content: 'Bears';
+  animation: animate infinite 3s;
+  padding-left: 10px;
+}
+
+@keyframes animate {
+  25% {
+    content: 'Beats';
+  }
+
+  75% {
+    content: 'Battlestar galactica';
+  }
+}
+
+.animation-container {
+  display: block;
+  width: 50%;
+  margin-left: 50px;
+}

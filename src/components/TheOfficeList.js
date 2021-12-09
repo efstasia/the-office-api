@@ -8,17 +8,25 @@ export const TheOfficeList = () => {
   useEffect(() => {
     fetch(THE_OFFICE_URL)
       .then(res => res.json())
-      .then(json => setOfficeEpisodes(json), []);
-  });
+      .then(json => setOfficeEpisodes(json));
+  }, []);
+  if (officeEpisodes.length === 0) {
+    console.log('EMPTY ARRAY');
+  }
   console.log(officeEpisodes);
+
   return (
     <div>
       <p>TEST</p>
-      {officeEpisodes.forEach(item => (
-        <div key={item}>
-          <p>{item}</p>
+      {officeEpisodes.map(item => (
+        <div key={item.title}>
+          <p>
+            {item.title} / season: {item.season} / {item.original_air_date} /{' '}
+            {item.imdb_rating}
+          </p>
         </div>
       ))}
+
       {/* <p>title: {officeEpisodes.title}</p> */}
     </div>
   );
