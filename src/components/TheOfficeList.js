@@ -25,8 +25,6 @@ export const TheOfficeList = () => {
     setTextInput(event.target.value);
   };
 
-  console.log(setTextInput);
-
   return (
     <>
       <div className='info-container'>
