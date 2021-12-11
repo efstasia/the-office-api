@@ -11,7 +11,11 @@ export const Header = () => {
       <h1>THE OFFICE</h1>
       <div className='animation-container'>
         <h2>
-          <img src='https://i.postimg.cc/2SkLwdrr/dwight.png' /> <span> </span>
+          <img
+            alt='dwightschrute'
+            src='https://i.postimg.cc/2SkLwdrr/dwight.png'
+          />
+          <span className='animation-span'> </span>
         </h2>
       </div>
     </div>

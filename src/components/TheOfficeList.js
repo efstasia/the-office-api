@@ -2,63 +2,99 @@ import React, { useState, useEffect } from 'react';
 
 export const TheOfficeList = () => {
   const [officeEpisodes, setOfficeEpisodes] = useState([]);
+  const [textInput, setTextInput] = useState('');
+  const [ratingInput, setRatingInput] = useState('');
 
-  const THE_OFFICE_URL = `https://project-backend-theoffice.herokuapp.com/`;
+  const THE_OFFICE_URL = `https://project-backend-theoffice.herokuapp.com?season=${textInput}`;
+
+  const THE_OFFICE_URL_RATING = `https://project-backend-theoffice.herokuapp.com?imdb_rating=${ratingInput}`;
 
   useEffect(() => {
     fetch(THE_OFFICE_URL)
       .then(res => res.json())
       .then(json => setOfficeEpisodes(json));
-  }, []);
-  if (officeEpisodes.length === 0) {
-    console.log('EMPTY ARRAY');
-  }
-  console.log(officeEpisodes);
+  }, [THE_OFFICE_URL]);
+
+  useEffect(() => {
+    fetch(THE_OFFICE_URL_RATING)
+      .then(res => res.json())
+      .then(json => setOfficeEpisodes(json));
+  }, [THE_OFFICE_URL_RATING]);
+
+  const onSetSeasonInput = event => {
+    setTextInput(event.target.value);
+  };
+
+  console.log(setTextInput);
 
   return (
-    <div>
-      <p>TEST</p>
-      {officeEpisodes.map(item => (
-        <div key={item.title}>
-          <p>
-            {item.title} / season: {item.season} / {item.original_air_date} /{' '}
-            {item.imdb_rating}
-          </p>
+    <>
+      <div className='info-container'>
+        <div className='search-container'>
+          <input
+            className='input-container'
+            onChange={onSetSeasonInput}
+            value={textInput}
+            type='number'
+            placeholder='season number..'
+          />
+          {/* <button
+            className='input-button'
+            onClick={e => setTextInput(e.target.value)}
+          >
+            search
+          </button> */}
+          <p>OR</p>
+          <input
+            className='input-container'
+            onChange={event => setRatingInput(event.target.value)}
+            value={ratingInput}
+            type='number'
+            placeholder='rating..'
+          />
+          {/* <button
+            className='input-button'
+            onClick={e => setRatingInput(e.target.value)}
+          >
+            search
+          </button> */}
         </div>
-      ))}
-
-      {/* <p>title: {officeEpisodes.title}</p> */}
-    </div>
+        <div className='rating-info-green box'>rating 8 or higher</div>
+        <div className='rating-info-red box'>rating 8 or lower</div>
+        <div className='season-info-orange box'>season 1-5</div>
+        <div className='season-info-pink box'>season 6-9</div>
+      </div>
+      <div className='list-container'>
+        {officeEpisodes.map(item => (
+          <div key={item.title} className='show-list'>
+            <p>
+              {item.title} /
+              <span
+                className={
+                  item.season === 1 ||
+                  item.season === 2 ||
+                  item.season === 3 ||
+                  item.season === 4 ||
+                  item.season === 5
+                    ? 'season-one-five'
+                    : 'season-six-nine'
+                }
+              >
+                {' '}
+                season: {item.season}
+              </span>{' '}
+              /{item.original_air_date} /
+              <span
+                className={
+                  item.imdb_rating > 7.9 ? 'high-rating' : 'low-rating'
+                }
+              >
+                {item.imdb_rating}
+              </span>
+            </p>
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
-
-// const [officeEpisodes, setOfficeEpisodes] = useState(['one, two']);
-
-//   const THE_OFFICE_URL = `https://project-backend-theoffice.herokuapp.com/episodes`;
-//   console.log(THE_OFFICE_URL);
-
-//   return (
-//     <div>
-//       <p>test</p>
-
-//       {/* {officeEpisodes.map((officeEpisode, index) => {
-//         return <div key='index'>{officeEpisode.desc}</div>;
-//       })} */}
-//       {/* {API_fetch.map(episode => {
-//         return (
-//           <div>
-//             <p>{episode.episodes}</p>
-//           </div>
-//         );
-//       })} */}
-//     </div>
-//   );
-//   // return (
-//   //   <div>
-//   //     {episodes.episodes.map(episode => {
-//   //       <div>
-//   //         <p>{episode.episodes}</p>
-//   //       </div>;
-//   //     })}
-//   //   </div>
-//   // );

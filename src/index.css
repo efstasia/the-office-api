@@ -3,6 +3,10 @@
   font-family: staffmeeting;
 }
 
+* {
+  border-radius: 10px;
+}
+
 body {
   margin: 0;
   font-family: staffmeeting;
@@ -28,18 +32,14 @@ code {
   width: auto;
 }
 
-/* h2 {
-  justify-content: center;
-} */
-
-span::before {
+.animation-span::before {
   content: 'Bears';
   animation: animate infinite 3s;
   padding-left: 10px;
 }
 
 @keyframes animate {
-  25% {
+  35% {
     content: 'Beats';
   }
 
@@ -52,4 +52,108 @@ span::before {
   display: block;
   width: 50%;
   margin-left: 50px;
+}
+
+.list-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.show-list {
+  margin: 0 auto;
+}
+
+.high-rating {
+  color: green;
+}
+
+.low-rating {
+  color: red;
+}
+
+.season-span {
+  font-weight: bold;
+}
+
+.info-container {
+  display: flex;
+  border: 2px solid black;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.box {
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  padding: 8px;
+  text-align: center;
+}
+
+.rating-info-green {
+  background-color: green;
+}
+
+.rating-info-red {
+  background-color: red;
+}
+
+.season-one-five {
+  color: rgb(255, 115, 0);
+  font-weight: bold;
+}
+
+.season-six-nine {
+  color: rgb(233, 34, 183);
+  font-weight: bold;
+}
+
+.season-info-orange {
+  background-color: rgb(255, 115, 0);
+}
+
+.season-info-pink {
+  background-color: rgb(233, 34, 183);
+}
+
+.input-container {
+  height: 100%;
+  padding: 5px;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+
+  margin: 8px;
+  padding: 8px;
+}
+
+@media (max-width: 768px) {
+  .list-container {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 8px 0 8px;
+    grid-gap: 10px;
+  }
+  .info-container {
+    flex-wrap: wrap;
+  }
+  .search-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .search-container input {
+    width: 20%;
+    margin: 0 auto;
+  }
+  .header-container {
+    margin: 0 20px;
+  }
+  .animation-span::before {
+    animation: none;
+    content: 'bears, beats, battlestar galactica';
+    font-size: 12px;
+  }
 }
