@@ -57,6 +57,7 @@ code {
 .list-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
 
 .show-list {
@@ -81,6 +82,8 @@ code {
   justify-content: space-evenly;
   align-items: center;
   margin-top: 10px;
+  width: 70%;
+  margin: 10px auto;
 }
 
 .box {
@@ -99,24 +102,6 @@ code {
   background-color: red;
 }
 
-.season-one-five {
-  color: rgb(255, 115, 0);
-  font-weight: bold;
-}
-
-.season-six-nine {
-  color: rgb(233, 34, 183);
-  font-weight: bold;
-}
-
-.season-info-orange {
-  background-color: rgb(255, 115, 0);
-}
-
-.season-info-pink {
-  background-color: rgb(233, 34, 183);
-}
-
 .input-container {
   height: 100%;
   padding: 5px;
@@ -125,9 +110,19 @@ code {
 .search-container {
   display: flex;
   flex-direction: column;
-
   margin: 8px;
   padding: 8px;
+}
+
+.search-container select {
+  padding: 5px;
+}
+
+.desc {
+  color: black;
+  font-size: 12px;
+  display: block;
+  text-transform: uppercase;
 }
 
 @media (max-width: 768px) {
@@ -138,18 +133,21 @@ code {
   }
   .info-container {
     flex-wrap: wrap;
+    width: 80%;
+    margin: 0 auto;
   }
   .search-container {
     width: 100%;
     text-align: center;
     margin-top: 10px;
   }
-  .search-container input {
-    width: 20%;
+  .search-container select {
+    width: 50%;
     margin: 0 auto;
   }
   .header-container {
     margin: 0 20px;
+    border: none;
   }
   .animation-span::before {
     animation: none;
