@@ -153,7 +153,7 @@ code {
   .info-container {
     flex-wrap: wrap;
     width: 80%;
-    margin: 0 auto;
+    margin: 8px auto;
   }
   .search-container {
     width: 100%;
