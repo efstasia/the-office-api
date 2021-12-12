@@ -6,7 +6,6 @@ import { TheOfficeList } from './components/TheOfficeList';
 export const App = () => {
   return (
     <div>
-      <Header />
       <TheOfficeList />
     </div>
   );

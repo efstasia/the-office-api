@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { Loader } from './Loader';
+import { Header } from './Header';
 
 export const TheOfficeList = () => {
   const [officeEpisodes, setOfficeEpisodes] = useState([]);
@@ -68,6 +69,8 @@ export const TheOfficeList = () => {
 
   return (
     <>
+      <Header />
+      <main className='main-container'>
       <div className='info-container'>
         {loading && <Loader />}
         <div className='search-container'>
@@ -106,8 +109,11 @@ export const TheOfficeList = () => {
             className='show-list'
           >
             <p>
-              {item.title} /<span>season: {item.season}</span>/
-              {item.original_air_date} /
+              {item.title} /
+              <span className='season-episode'>
+                season {item.season} / episode {item.episode_num}{' '}
+              </span>
+              /{item.original_air_date} /
               <span
                 className={
                   item.imdb_rating > 7.9 ? 'high-rating' : 'low-rating'
@@ -120,6 +126,7 @@ export const TheOfficeList = () => {
           </div>
         ))}
       </div>
+      </main>
     </>
   );
 };
